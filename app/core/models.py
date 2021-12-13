@@ -102,7 +102,6 @@ class Student(models.Model):
         ("married", "Married")
     )
     marital_status = models.CharField(max_length=50, null=True, choices=MARITAL_STATUS)
-
     # Address Details
     address = models.CharField(max_length=100, null=True)
     city = models.CharField(max_length=100, null=True)
@@ -111,6 +110,34 @@ class Student(models.Model):
     state = models.CharField(max_length=100, null=True, default="Delhi")
     email_address = models.EmailField(max_length=200, null=True)
     phone_number = PhoneNumberField(null=True, default="+91")
+
+    ## Education Summary
+
+    country_of_education = models.CharField(null=True, default="India", max_length=100)
+    HIGHEST_EDUCATION_LEVEL = (
+        ("1", "Grade 1"),
+        ("2", "Grade 2"),
+        ("3", "Grade 3"),
+        ("4", "Grade 4"),
+        ("5", "Grade 5"),
+        ("6", "Grade 6"),
+        ("7", "Grade 7"),
+        ("8", "Grade 8"),
+        ("9", "Grade 9"),
+        ("10", "Grade 10"),
+        ("11", "Grade 11"),
+        ("12", "Grade 12/High School"),
+        ("13", "1-Year Post Secondary Certificate"),
+        ("14", "2-Year Undergraduate Diploma"),
+        ("15", "3-Year Undergraduate Advanced Diploma"),
+        ("16", "3-Year Bachelors Degree"),
+        ("17", "4-Year Bachelors Degree"),
+        ("18", "Post-Graduate Diploma/Certificate"),
+        ("19", "Masters Degree"),
+        ("20", "Doctoral Degree (PhD, M.D,..)"),
+    )
+    highest_level_of_education = models.CharField(max_length=3, choices=HIGHEST_EDUCATION_LEVEL, null=True)
+    marks = models.CharField(max_length=50, null=True, help_text="Marks are in ( % ) percantage")
 
     
 
