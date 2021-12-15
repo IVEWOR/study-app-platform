@@ -138,7 +138,60 @@ class Student(models.Model):
     )
     highest_level_of_education = models.CharField(max_length=3, choices=HIGHEST_EDUCATION_LEVEL, null=True)
     marks = models.CharField(max_length=50, null=True, help_text="Marks are in ( % ) percantage")
+    # Grade 12
+    school_name_of_grade_12 = models.CharField(max_length=200, null=True)
+    country_of_grade_12_school = models.CharField(max_length=200, null=True, default="India")
+    grade_12_primary_language_of_instruction = models.CharField(max_length=200, null=True, default="English")
+    grade_12_attended_school_from = models.DateField(null=True)
+    grade_12_attended_school_to = models.DateField(null=True)
+    grade_12_degree_name = models.CharField(max_length=100, null=True)
+    grade_12_school_address = models.CharField(max_length=150, null=True)
+    grade_12_school_state = models.CharField(max_length=100, null=True)
+    grade_12_school_city = models.CharField(max_length=100, null=True)
+    grade_12_school_zip_code = models.CharField(max_length=100, null=True)
+    # Grade 10
+    school_name_of_grade_10 = models.CharField(max_length=200, null=True)
+    country_of_grade_10_school = models.CharField(max_length=200, null=True, default="India")
+    grade_10_primary_language_of_instruction = models.CharField(max_length=200, null=True, default="English")
+    grade_10_attended_school_from = models.DateField(null=True)
+    grade_10_attended_school_to = models.DateField(null=True)
+    grade_10_degree_name = models.CharField(max_length=100, null=True)
+    grade_10_school_address = models.CharField(max_length=150, null=True)
+    grade_10_school_state = models.CharField(max_length=100, null=True)
+    grade_10_school_city = models.CharField(max_length=100, null=True)
+    grade_10_school_zip_code = models.CharField(max_length=100, null=True)
 
+    ## Test Scores
+
+    ENGLISH_TEST_TYPE = (
+        ("I don't have this", "I don't have this"),
+        ("I will provide this later", "I will provide this later"),
+        ("IELTS", "IELTS"),
+        ("TOEFL", "TOEFL"),
+        ("PTE", "PTE"),
+        ("Duolingo English Test", "Duolingo English Test"),
+    )
+
+    english_test_type = models.CharField(max_length=100, choices=ENGLISH_TEST_TYPE, null=True)
+    #test score fields pending
+
+    ## Background information
+    CHOICES = (
+        ("Yes", "Yes"),
+        ("No", "No")
+    )
+    VALID_VISA = (
+        ("No", "No"),
+        ("USA F1 Visa", "USA F1 Visa"),
+        ("Canadian Study Permit or Visitor Visa", "Canadian Study Permit or Visitor Visa"),
+        ("UK Student Visa (Tier 4) or Short-Term Study Visa", "UK Student Visa (Tier 4) or Short-Term Study Visa"),
+        ("Australian Study Visa", "Australian Study Visa"),
+    )
+    refusal_visa_from = models.CharField(max_length=100, choices=CHOICES, null=True)
+    valid_visa = models.CharField(max_length=100, choices=VALID_VISA,  null=True)
+    more_details = models.TextField(null=True)
+
+    ## UPLOAD DOCUMENTS -- PENDING 
     
 
     def __str__(self):
