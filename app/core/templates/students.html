@@ -1,0 +1,11 @@
+<html>
+  <head></head>
+  <body>
+    <h1>Students</h1>
+    {% if user.is_authenticated %}
+    <div>Yes</div>
+    {% else %}
+    <div>No</div>
+    {% endif %}
+  </body>
+</html>

@@ -1,0 +1,10 @@
+<html>
+  <head></head>
+  <body>
+    <h1>Create Student</h1>
+    <form method="POST">
+      {% csrf_token %} {{ create_student }}
+      <button class="btn btn-primary" type="submit">Add A Student</button>
+    </form>
+  </body>
+</html>

@@ -19,6 +19,7 @@ class SchoolAdmin(admin.ModelAdmin):
 
 class StudentAdmin(admin.ModelAdmin):
     fieldsets = [
+        ("Agent who created", {"fields": ["author"]}),
         ("General Information", {"fields": ["first_name", "middle_name", "last_name", "date_of_birth", "first_language", "country_of_citizenship", "passport_number", "passport_expry_date", "gender", "marital_status"]}),
         ("Address Details", {"fields": ["address", "city", "zipcode", "country", "state", "email_address", "phone_number"]}),
         ("Education Summary for Grade 12", {"fields": ["school_name_of_grade_12", "country_of_grade_12_school", "grade_12_primary_language_of_instruction", "grade_12_attended_school_from", "grade_12_attended_school_to", "grade_12_degree_name", "grade_12_school_address", "grade_12_school_state", "grade_12_school_city", "grade_12_school_zip_code"]}),

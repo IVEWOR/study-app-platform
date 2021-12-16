@@ -3,6 +3,7 @@ from django.db.models.fields import BLANK_CHOICE_DASH, CharField
 from tinymce.models import HTMLField
 from datetime import datetime
 from phonenumber_field.modelfields import PhoneNumberField
+from django.contrib.auth.models import User
 
 class School(models.Model):
     name = models.CharField(max_length=350)
@@ -83,6 +84,7 @@ class Courses(models.Model):
         return self.name
 
 class Student(models.Model):
+    author = models.ForeignKey(User, on_delete=models.CASCADE, default=None)
     ## General Information
     first_name = models.CharField(max_length=50, null=True)
     middle_name = models.CharField(max_length=50, null=True)
