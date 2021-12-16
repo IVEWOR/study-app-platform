@@ -1,0 +1,46 @@
+{% extends "skeleton.html" %} {% block content %}
+
+<section class="container-fluid bg-light">
+  <div class="container">
+    <div class="row py-5">
+      <h1 class="py-4">Search</h1>
+      <form class="row" action="{% url 'index' %}" method="POST">
+        {% csrf_token %}
+        <div class="mb-3 col-5">
+          <input
+            name="schoolsearched"
+            class="form-control form-control-lg"
+            type="text"
+            id="searched"
+            placeholder="Search for School"
+          />
+        </div>
+        <div class="mb-3 col-5">
+          <input
+            name="coursesearched"
+            class="form-control form-control-lg"
+            type="text"
+            id="searched"
+            placeholder="Search for Course"
+          />
+        </div>
+        <div class="col-2">
+          <button class="btn btn-lg btn-primary" type="submit">Search</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
+<ul>
+  {% if schoolsearched %}
+  <li style="color: red">
+    {% for school in schools %} {{ school }} - {{ school.city }} {% endfor%}
+  </li>
+  {% elif coursesearched %}
+  <li style="color: blue">
+    {% for course in courses %} {{ course }} - {{course.university}}{%endfor%}
+  </li>
+  {% endif %}
+</ul>
+
+{% endblock %}

@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'core',
     'tinymce',
     'phonenumber_field',
+    'bootstrap5',
 ]
 
 MIDDLEWARE = [

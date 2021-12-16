@@ -3,7 +3,14 @@
   <body>
     <h1>Students</h1>
     {% if user.is_authenticated %}
-    <div>Yes</div>
+    <div>
+      {% for student in students %}
+      <ul>
+        <li>{{ student.first_name }}</li>
+      </ul>
+
+      {% endfor %}
+    </div>
     {% else %}
     <div>No</div>
     {% endif %}

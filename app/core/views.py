@@ -1,3 +1,4 @@
+from django.contrib.auth.models import User
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from .forms import NewUserForm, CreateStudent
@@ -5,6 +6,7 @@ from django.contrib.auth import login, authenticate
 from django.contrib import messages
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth.decorators import login_required
+from .models import Student, School, Courses
 
 
 def register(request):
@@ -52,8 +54,16 @@ def create_student(request):
 
 @login_required(login_url="/main/login")
 def students(request):
-    return render(request, template_name="students.html")
+    students = Student.objects.filter(author=request.user).values()
+    return render(request, template_name="students.html", context = {"students": students})
 
 
 def index(request):
-    return HttpResponse("It's working")
+    if request.method == "POST":
+        schoolsearched = request.POST["schoolsearched"]
+        coursesearched = request.POST["coursesearched"]
+        schools = School.objects.filter(name__contains=schoolsearched)
+        courses = Courses.objects.filter(name__contains=coursesearched)
+        return render(request, template_name="index.html", context = {"coursesearched":coursesearched, "schoolsearched": schoolsearched, "courses": courses, "schools": schools})
+    else:
+        return render(request, template_name="index.html")
