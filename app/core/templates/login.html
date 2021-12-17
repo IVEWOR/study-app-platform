@@ -1,10 +1,45 @@
-<html>
-  <head></head>
-  <body>
-    <h1>Login</h1>
-    <form method="POST">
-      {% csrf_token %} {{ login }}
-      <button class="btn btn-primary" type="submit">Login</button>
-    </form>
-  </body>
-</html>
+{% extends "skeleton.html" %} {% block content %}
+
+<div class="container-fluid bg-light login-main">
+  <form class="container" method="POST">
+    <div class="row">
+      <div class="login">
+        <h1 class="h2 mb-3 fw-normal">Login</h1>
+        {% csrf_token %}
+        <div id="formElements" class="input-group-lg">
+          {{ login }}
+          <button class="btn btn-outline-primary btn-lg mt-3" type="submit">
+            Login
+          </button>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>
+<script>
+  let ulabel = document.getElementsByTagName("label")[0];
+  let plabel = document.getElementsByTagName("label")[1];
+  let username = document.getElementById("id_username");
+  let password = document.getElementById("id_password");
+  username.classList.add("form-control");
+  password.classList.add("form-control");
+  ulabel.classList.add("form-label");
+  plabel.classList.add("form-label");
+  password.id += " floatingInput";
+  username.id += " floatingInput";
+  let formDiv = document.createElement("div");
+</script>
+<style>
+  .login-main {
+    height: calc(100vh - 60px);
+    position: relative;
+  }
+  .login {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -60%);
+    width: 600px;
+  }
+</style>
+{% endblock %}

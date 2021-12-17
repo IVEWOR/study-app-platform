@@ -1,10 +1,47 @@
-<html>
-  <head></head>
-  <body>
-    <h1>Register</h1>
-    <form method="POST">
-      {% csrf_token %} {{ register }}
-      <button class="btn btn-primary" type="submit">Register</button>
-    </form>
-  </body>
-</html>
+{% extends "skeleton.html" %} {% block content %}
+<section class="container-fluid bg-light full-height">
+  <form method="POST" class="container">
+    <div class="row">
+      <div class="full-height-inner input-group-lg">
+        <h1 class="h2 mb-3 fw-bold">Register</h1>
+        {% csrf_token %} {{ register }}
+        <button class="btn btn-outline-primary btn-lg mt-3" type="submit">
+          Register
+        </button>
+      </div>
+    </div>
+  </form>
+</section>
+
+<script>
+  inputF = document.getElementsByTagName("input");
+  labalF = document.getElementsByTagName("label");
+  helptext = document.getElementsByClassName("helptext");
+  for (let n = 0; n < inputF.length; n++) {
+    inputF[n].classList.add("form-control");
+    if (labalF[n]) {
+      labalF[n].classList.add("form-label", "ps-0", "mt-3");
+    }
+    if (helptext[n]) {
+      helptext[n].classList.add("ps-0", "form-text", "d-block");
+    }
+  }
+</script>
+<style>
+  .full-height {
+    height: calc(100vh - 60px);
+    position: relative;
+  }
+  .full-height .full-height-inner {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -60%);
+    width: 600px;
+  }
+  br {
+    display: none;
+  }
+</style>
+
+{% endblock %}

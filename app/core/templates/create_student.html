@@ -1,10 +1,126 @@
-<html>
-  <head></head>
-  <body>
-    <h1>Create Student</h1>
+{% extends "skeleton.html" %} {% block content %}
+
+<section class="container-fluid bg-primary">
+  <div class="container">
+    <div class="row py-5">
+      <h1 class="py-4 text-light">Create/Edit Student</h1>
+    </div>
+  </div>
+</section>
+
+<section class="container-fluid bg-light py-5">
+  <div class="container py-3">
     <form method="POST">
-      {% csrf_token %} {{ create_student }}
-      <button class="btn btn-primary" type="submit">Add A Student</button>
+      {% csrf_token %}
+      <div class="steps">
+        <div class="row">
+          <h2>Personal Information</h2>
+          <span class="form-text">As mentioned in your passport</span>
+          <div class="py-2 col-4">
+            <label class="pb-2" for="first_name">First Name</label>
+            {{ create_student.first_name }}
+          </div>
+          <div class="py-2 col-4">
+            <label class="pb-2" for="first_name">Middle Name</label>
+            {{ create_student.middle_name }}
+          </div>
+          <div class="py-2 col-4">
+            <label class="pb-2" for="first_name">Last Name</label>
+            {{ create_student.last_name }}
+          </div>
+          <div class="py-2 col-4">
+            <label class="pb-2" for="first_name">Date of Birth</label>
+            {{ create_student.date_of_birth }}
+          </div>
+          <div class="py-2 col-4">
+            <label class="pb-2" for="first_name">First Language</label>
+            {{ create_student.first_language }}
+          </div>
+          <div class="py-2 col-4">
+            <label class="pb-2" for="first_name">Country of Citizenship</label>
+            {{ create_student.country_of_citizenship }}
+          </div>
+          <div class="py-2 col-4">
+            <label class="pb-2" for="first_name">Passport Number</label>
+            {{ create_student.passport_number }}
+          </div>
+          <div class="py-2 col-4">
+            <label class="pb-2" for="first_name">Passport Expry Date</label>
+            {{ create_student.passport_expry_date }}
+          </div>
+          <div class="py-2 col-4">
+            <label class="pb-2" for="first_name">Gender</label>
+            {{ create_student.gender }}
+          </div>
+          <div class="py-2 col-4">
+            <label class="pb-2" for="first_name">Marital Status</label>
+            {{ create_student.marital_status }}
+          </div>
+        </div>
+        <div class="row mt-5">
+          <h2 class="col-12">Address Information</h2>
+          <div class="py-2 col-4">
+            <label class="pb-2" for="first_name">Email Address</label>
+            {{ create_student.email_address }}
+          </div>
+          <div class="py-2 col-4">
+            <label class="pb-2" for="first_name">Phone Number</label>
+            {{ create_student.phone_number }}
+          </div>
+          <div class="py-2 col-4">
+            <label class="pb-2" for="first_name">Country</label>
+            {{ create_student.country }}
+          </div>
+          <div class="py-2 col-8">
+            <label class="pb-2" for="first_name">Address</label>
+            {{ create_student.address }}
+          </div>
+          <div class="py-2 col-4">
+            <label class="pb-2" for="first_name">Zip Code</label>
+            {{ create_student.zipcode }}
+          </div>
+          <div class="py-2 col-6">
+            <label class="pb-2" for="first_name">City</label>
+            {{ create_student.city }}
+          </div>
+          <div class="py-2 col-6">
+            <label class="pb-2" for="first_name">State</label>
+            {{ create_student.state }}
+          </div>
+        </div>
+      </div>
+      <!-- STEP 1 -->
+      <div class="steps py-4">
+        <div class="row">
+          <h2>Education History</h2>
+          <div class="py-2 col-6">
+            <label class="pb-2" for="first_name">Country of Education</label>
+            {{ create_student.country_of_education }}
+          </div>
+          <div class="py-2 col-6">
+            <label class="pb-2" for="first_name">Country of Education</label>
+            {{ create_student.highest_level_of_education }}
+          </div>
+        </div>
+      </div>
+      <button class="btn btn-primary mt-4" type="submit">Add A Student</button>
     </form>
-  </body>
-</html>
+  </div>
+</section>
+
+<script>
+  selectF = document.getElementsByTagName("select");
+  for (let n = 0; n < selectF.length; n++) {
+    selectF[n].classList.add("form-select");
+  }
+  inputF = document.getElementsByTagName("input");
+  helptext = document.getElementsByClassName("helptext");
+  for (let n = 0; n < inputF.length; n++) {
+    inputF[n].classList.add("form-control");
+    if (helptext[n]) {
+      helptext[n].classList.add("ps-0", "form-text", "d-block");
+    }
+  }
+</script>
+
+{% endblock %}

@@ -111,7 +111,7 @@ class Student(models.Model):
     country = models.CharField(max_length=100, null=True, default="India")
     state = models.CharField(max_length=100, null=True, default="Delhi")
     email_address = models.EmailField(max_length=200, null=True)
-    phone_number = PhoneNumberField(null=True, default="+91")
+    phone_number = PhoneNumberField(null=True, default="+91 ")
 
     ## Education Summary
 

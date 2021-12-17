@@ -1,18 +1,52 @@
-<html>
-  <head></head>
-  <body>
-    <h1>Students</h1>
-    {% if user.is_authenticated %}
-    <div>
-      {% for student in students %}
-      <ul>
-        <li>{{ student.first_name }}</li>
-      </ul>
+{% extends "skeleton.html" %} {% block content %}
 
-      {% endfor %}
+<section class="container-fluid bg-primary">
+  <div class="container">
+    <div class="row">
+      <div class="py-5">
+        <h1 class="h2 mb-3 fw-bold text-light">Students</h1>
+        <span class="form-text text-light">
+          List of your students. Click the button to edit
+        </span>
+      </div>
     </div>
-    {% else %}
-    <div>No</div>
-    {% endif %}
-  </body>
-</html>
+  </div>
+</section>
+<section class="container">
+  <div class="row">
+    <div class="py-5">
+      <table class="table table-striped table-hover">
+        {% if user.is_authenticated %}
+        <thead>
+          <tr>
+            <th scope="col">Name</th>
+            <th scope="col">Citizenship</th>
+            <th scope="col">Any Visa Refusal</th>
+            <th scope="col">Action</th>
+          </tr>
+        </thead>
+        {% for student in students %}
+        <tbody>
+          <tr>
+            <td>{{ student.first_name }} {{ student.last_name }}</td>
+            <td>{{ student.country_of_citizenship }}</td>
+            <td>{{ student.refusal_visa_from }}</td>
+            <td>
+              <a href="#" class="btn btn-sm btn-primary">Edit Profile</a>
+            </td>
+          </tr>
+        </tbody>
+        {% endfor %}
+      </table>
+      {% endif %}
+    </div>
+  </div>
+</section>
+
+<style>
+  tbody > tr > td {
+    vertical-align: middle;
+  }
+</style>
+
+{% endblock %}
